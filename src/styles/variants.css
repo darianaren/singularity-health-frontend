@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Comfortaa-Bold";
+  src: url("../../public/fonts/Comfortaa-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Comfortaa-Regular";
+  src: url("../../public/fonts/Comfortaa-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gibson-SemiBold";
+  src: url("../../public/fonts/Gibson-SemiBold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Museo-Sans-Rounded";
+  src: url("../../public/fonts/MuseoSansRounded700.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../public/fonts/OpenSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../public/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SegoeUI-Bold";
+  src: url("../../public/fonts/SegoeUI-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SegoeUI-Regular";
+  src: url("../../public/fonts/SegoeUI-Regular.ttf") format("truetype");
+}
+
+:root {
+  --unnamed-color-ff6752: #ff6752;
+  --unnamed-color-4487ff: #4487ff;
+  --unnamed-color-f8f8f8: #f8f8f8;
+  --unnamed-color-00225c: #00225c;
+  --unnamed-color-808080: #808080;
+  --unnamed-color-fd6845: #fd6845;
+  --unnamed-color-b1bbcd: #b1bbcd;
+  --unnamed-color-fe6845: #fe6845;
+  --unnamed-color-7569de: #7569de;
+  --unnamed-color-ffa046: #ffa046;
+  --unnamed-color-9ecb45: #9ecb45;
+
+  --font-confortaa-bold: Comfortaa-Bold;
+  --font-confortaa-regular: Comfortaa-Regular;
+  --font-gibson-semibold: Gibson-SemiBold;
+  --font-museo-sans-regular: Museo-Sans-Rounded;
+  --font-open-sans-bold: OpenSans-Bold;
+  --font-open-sans-regular: OpenSans-Regular;
+  --font-segoe-ui-bold: SegoeUI-Bold;
+  --font-segoe-ui-regular: SegoeUI-Regular;
+}

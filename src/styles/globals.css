@@ -1,0 +1,22 @@
+@import "./variants.css";
+
+* {
+  color: var(--unnamed-color-808080);
+  font-family: var(--font-open-sans-regular);
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: var(--font-museo-sans-regular);
+}
+
+h2 {
+  font-family: var(--font-confortaa-bold);
+}
+
+h3 {
+  font-family: var(--font-segoe-ui-bold);
+}
