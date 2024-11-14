@@ -1,0 +1,98 @@
+/* app/login/login.module.css */
+
+.loginContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.aside {
+  background-color: #ff5b43;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContainer {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formContainer {
+  width: 60%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcomeTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.welcomeTitle::before {
+  content: "";
+  width: 5px;
+  height: 20px;
+  background-color: #ff5b43;
+  margin-right: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.forgotPassword {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+  text-align: right;
+  text-decoration: none;
+}
+
+.loginButton {
+  background-color: #4285f4;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.loginButton:hover {
+  background-color: #357ae8;
+}
+
+.registerText {
+  font-size: 0.9rem;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.registerLink {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.registerLink:hover {
+  text-decoration: underline;
+}
