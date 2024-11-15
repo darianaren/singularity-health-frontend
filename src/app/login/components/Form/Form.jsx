@@ -49,7 +49,7 @@ export default function Form({
         <Button
           onClick={onSubmit}
           isLoading={isLoading}
-          disabled={!email || !password}
+          disabled={!email || !password || errors.email || errors.password}
           aria-label="Inicia sesión con tus credenciales"
         >
           INICIAR SESIÓN

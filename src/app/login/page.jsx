@@ -32,16 +32,19 @@ export default function Login() {
   });
 
   const onSubmit = useCallback(async () => {
-    setIsLoading(true);
-    formValidator();
+    try {
+      setIsLoading(true);
+      formValidator();
 
-    if (Object.keys(errors).length) return null;
+      if (Object.keys(errors).length) return null;
+      await login(form);
 
-    await login(form);
-
-    resetForm();
+      resetForm();
+    } catch (error) {
+      console.error("Error en el login:", error);
+    }
     setIsLoading(false);
-  }, [errors, login, form, resetForm, formValidator]);
+  }, [errors, login, form, resetForm, formValidator, setIsLoading]);
 
   return (
     <main
