@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
  * @description A customizable input component with optional masking and error handling.
  *
  * @component
- * @param {InputProps} props - The props object containing the necessary data.
+ * @param {Object} props - The props object containing the necessary data.
  *   @property {string} error - Error message to display when the input has an error.
  *   @property {string} label - Label for the input field.
  *   @property {string} className - Additional CSS class names for the input container.
