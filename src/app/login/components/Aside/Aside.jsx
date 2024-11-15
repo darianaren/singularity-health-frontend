@@ -10,17 +10,17 @@ export default function Aside() {
   return (
     <aside className={styles.aside}>
       <Image
-        alt="Logo"
-        layout="fill"
+        fill
+        alt="Background"
         src={bgLogin}
-        objectFit="cover"
+        style={{ objectFit: "cover" }}
         className={styles["bg-login"]}
       />
 
       <div className={styles["logo-container"]}>
         <Image
           src={logo}
-          alt="Logo"
+          alt="Fetch: Pet Caretakers"
           width={250}
           height={250}
           className={styles.logo}

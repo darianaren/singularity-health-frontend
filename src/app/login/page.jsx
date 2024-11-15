@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 
 import dynamic from "next/dynamic";
 
@@ -20,8 +20,13 @@ export default function Login() {
     // branchOfficeValidation
   );
 
+  const onSubmit = useCallback(
+    (event) => login({ event, ...form }),
+    [login, form]
+  );
+
   return (
-    <div
+    <main
       style={{
         display: "flex",
         height: "100vh"
@@ -31,11 +36,11 @@ export default function Login() {
       <Form
         {...form}
         errors={errors}
-        onSubmit={login}
+        onSubmit={onSubmit}
         resetErrors={resetErrors}
         resetHandler={resetHandler}
         changeHandler={changeHandler}
       />
-    </div>
+    </main>
   );
 }

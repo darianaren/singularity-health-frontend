@@ -2,37 +2,55 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
+import Input from "@/components/atoms/Input/Input";
+
 export default function Form({
   email,
-  password,
   errors,
+  onSubmit,
+  password,
   resetErrors,
-  resetHandler,
   changeHandler
 }) {
   return (
-    <div className={styles.formContainer}>
-      <h2 className={styles.welcomeTitle}>BIENVENIDO</h2>
+    <section className={styles["form-container"]}>
+      <h2 className={styles["welcome-title"]}>BIENVENIDO</h2>
       <form className={styles.form}>
-        <input type="email" placeholder="EMAIL" className={styles.input} />
-        <input
-          type="password"
-          placeholder="CONTRASEÑA"
-          className={styles.input}
-        />
-        <a href="#" className={styles.forgotPassword}>
+        <div className={styles["input-container"]}>
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            value={email}
+            placeholder="EMAIL"
+            error={"errors.email"}
+            onClick={resetErrors}
+            onInput={changeHandler}
+          />
+          <Input
+            id="password"
+            type="password"
+            name="password"
+            value={password}
+            onClick={resetErrors}
+            error={errors.password}
+            placeholder="CONTRASEÑA"
+            onInput={changeHandler}
+          />
+        </div>
+        <a href="#" className={styles["forgot-password"]}>
           ¿Olvidaste tu contraseña?
         </a>
-        <button type="submit" className={styles.loginButton}>
+        <button className={styles.loginButton} onClick={onSubmit}>
           INICIAR SESIÓN
         </button>
       </form>
-      <p className={styles.registerText}>
+      <p className={styles["register-text"]}>
         AÚN NO TENGO CUENTA{" "}
-        <a href="#" className={styles.registerLink}>
+        <a href="#" className={styles["register-link"]}>
           REGISTRARSE
         </a>
       </p>
-    </div>
+    </section>
   );
 }
