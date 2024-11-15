@@ -42,9 +42,7 @@ export function AuthProvider({ children }) {
    * @returns {Promise<void>} Resolves when the login is successful and the session is set.
    */
   const login = useCallback(
-    async ({ event, email, password }) => {
-      console.log("holaaaaaaaaaaaaaaaaaa");
-      if (event) event.preventDefault();
+    async ({ email, password }) => {
       if (!email) throw new Error("Missing email");
       if (!password) throw new Error("Missing password");
 

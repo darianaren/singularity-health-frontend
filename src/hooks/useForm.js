@@ -1,22 +1,62 @@
 import { useState, useCallback } from "react";
 
-const useForm = (initialForm = {}, validateForm = () => ({})) => {
+import { APPLY_MASK } from "@/utils/constants/inputMasks";
+
+const useForm = ({ applyMask = {}, initialForm = {}, validateForm = {} }) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
 
-  const changeHandler = useCallback(
+  const handleChange = useCallback(
     (event) => {
       const { name, value } = event.target;
 
-      const updatedForm = { ...form, [name]: value };
+      const newErrors = { ...errors };
+      delete newErrors[name];
+      setErrors({ ...newErrors });
+
+      const typeMask = applyMask[name];
+
+      const maskApplicator = APPLY_MASK[typeMask] || APPLY_MASK.default;
+
+      const maskApplied = maskApplicator(value);
+
+      const updatedForm = { ...form, [name]: maskApplied };
 
       setForm(updatedForm);
-      setErrors(validateForm(updatedForm));
     },
-    [form, validateForm]
+    [form, applyMask, errors]
   );
 
-  const resetHandler = useCallback(() => {
+  const blurValidator = useCallback(
+    (event) => {
+      const { name, value } = event.target;
+
+      const rules = validateForm[name] || {};
+
+      if (rules.required && !value)
+        return setErrors({ ...errors, [name]: "Este campo es requerido" });
+
+      if (rules.customValidator && rules.customValidator(value)) {
+        const message = rules.message || "El valor del campo es inválido";
+        return setErrors({ ...errors, [name]: message });
+      }
+
+      if (rules.pattern && !rules.pattern.test(value)) {
+        const message = rules.message || "El valor del campo es inválido";
+        return setErrors({ ...errors, [name]: message });
+      }
+    },
+    [errors, validateForm]
+  );
+
+  const formValidator = useCallback(() => {
+    Object.keys(validateForm).forEach((name) => {
+      const value = form[name];
+      blurValidator({ target: { name, value } });
+    });
+  }, [form, blurValidator, validateForm]);
+
+  const resetForm = useCallback(() => {
     setForm(initialForm);
     setErrors({});
   }, [initialForm]);
@@ -28,9 +68,11 @@ const useForm = (initialForm = {}, validateForm = () => ({})) => {
   return {
     form,
     errors,
+    resetForm,
     resetErrors,
-    resetHandler,
-    changeHandler
+    handleChange,
+    formValidator,
+    blurValidator
   };
 };
 
