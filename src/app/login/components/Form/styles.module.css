@@ -44,6 +44,8 @@
   font-size: 0.9rem;
   text-align: right;
   text-decoration: none;
+
+  cursor: pointer;
 }
 
 .register-text {
