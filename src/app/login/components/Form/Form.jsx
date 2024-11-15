@@ -3,12 +3,14 @@ import React from "react";
 import styles from "./styles.module.css";
 
 import Input from "@/components/atoms/Input/Input";
+import Button from "@/components/atoms/Button/Button";
 
 export default function Form({
   email,
   errors,
   onSubmit,
   password,
+  isLoading,
   resetErrors,
   handleChange,
   blurValidator
@@ -44,9 +46,14 @@ export default function Form({
         <a href="#" className={styles["forgot-password"]}>
           ¿Olvidaste tu contraseña?
         </a>
-        <button className={styles.loginButton} onClick={onSubmit}>
+        <Button
+          onClick={onSubmit}
+          isLoading={isLoading}
+          disabled={!email || !password}
+          aria-label="Inicia sesión con tus credenciales"
+        >
           INICIAR SESIÓN
-        </button>
+        </Button>
       </form>
       <p className={styles["register-text"]}>
         AÚN NO TENGO CUENTA{" "}

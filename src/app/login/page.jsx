@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 
 import dynamic from "next/dynamic";
 
@@ -14,6 +14,8 @@ const Form = dynamic(() => import("./components/Form/Form"));
 
 export default function Login() {
   const { login } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     form,
@@ -29,20 +31,17 @@ export default function Login() {
     initialForm: INITIAL_STATE_FORM
   });
 
-  const onSubmit = useCallback(
-    async (event) => {
-      event.preventDefault();
+  const onSubmit = useCallback(async () => {
+    setIsLoading(true);
+    formValidator();
 
-      formValidator();
+    if (Object.keys(errors).length) return null;
 
-      if (Object.keys(errors).length) return null;
+    await login(form);
 
-      await login(form);
-
-      resetForm();
-    },
-    [errors, login, form, resetForm, formValidator]
-  );
+    resetForm();
+    setIsLoading(false);
+  }, [errors, login, form, resetForm, formValidator]);
 
   return (
     <main
@@ -56,6 +55,7 @@ export default function Login() {
         {...form}
         errors={errors}
         onSubmit={onSubmit}
+        isLoading={isLoading}
         resetErrors={resetErrors}
         handleChange={handleChange}
         blurValidator={blurValidator}
