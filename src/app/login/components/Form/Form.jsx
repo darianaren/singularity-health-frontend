@@ -10,9 +10,11 @@ export default function Form({
   errors,
   onSubmit,
   password,
+  register,
   isLoading,
   handleChange,
-  blurValidator
+  blurValidator,
+  recoverPassword
 }) {
   return (
     <section className={styles["form-container"]}>
@@ -40,9 +42,9 @@ export default function Form({
             placeholder="CONTRASEÑA"
           />
         </div>
-        <a href="#" className={styles["forgot-password"]}>
+        <span className={styles["forgot-password"]} onClick={recoverPassword}>
           ¿Olvidaste tu contraseña?
-        </a>
+        </span>
         <Button
           onClick={onSubmit}
           isLoading={isLoading}
@@ -54,9 +56,9 @@ export default function Form({
       </form>
       <p className={styles["register-text"]}>
         AÚN NO TENGO CUENTA{" "}
-        <a href="#" className={styles["register-link"]}>
+        <span className={styles["register-link"]} onClick={register}>
           REGISTRARSE
-        </a>
+        </span>
       </p>
     </section>
   );

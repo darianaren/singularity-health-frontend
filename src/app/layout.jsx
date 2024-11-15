@@ -1,6 +1,7 @@
 import React from "react";
 
 import AuthProvider from "@/providers/AuthProvider";
+import { ToastProvider } from "@/providers/ToastContext";
 
 import "../styles/globals.css";
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

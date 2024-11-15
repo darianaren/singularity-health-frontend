@@ -8,12 +8,14 @@ import { FORM_MASKS, FORM_VALIDATIONS, INITIAL_STATE_FORM } from "./constants";
 
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/context/AuthContext";
+import { useToast } from "@/context/ToastContext";
 
 const Aside = dynamic(() => import("./components/Aside/Aside"));
 const Form = dynamic(() => import("./components/Form/Form"));
 
 export default function Login() {
   const { login } = useAuth();
+  const { showToast } = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,10 +42,19 @@ export default function Login() {
 
       resetForm();
     } catch (error) {
-      console.error("Error en el login:", error);
+      showToast("Ha ocurrido un error", "danger");
     }
     setIsLoading(false);
-  }, [errors, login, form, resetForm, formValidator, setIsLoading]);
+  }, [errors, login, form, resetForm, formValidator, setIsLoading, showToast]);
+
+  const handleRegister = useCallback(
+    () => showToast("Página en construcción", "warning"),
+    [showToast]
+  );
+  const handleRecoverPassword = useCallback(
+    () => showToast("Su contraseña es: reqres.in", "success"),
+    [showToast]
+  );
 
   return (
     <main
@@ -58,8 +69,10 @@ export default function Login() {
         errors={errors}
         onSubmit={onSubmit}
         isLoading={isLoading}
+        register={handleRegister}
         handleChange={handleChange}
         blurValidator={blurValidator}
+        recoverPassword={handleRecoverPassword}
       />
     </main>
   );
