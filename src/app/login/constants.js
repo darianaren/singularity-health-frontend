@@ -20,3 +20,11 @@ export const FORM_VALIDATIONS = Object.freeze({
 export const FORM_MASKS = Object.freeze({
   email: INPUT_MASKS.LOWER
 });
+
+export const ERROR_MESSAGES = Object.freeze({
+  "user not found": "Correo electrónico incorrecto",
+  "Missing password": "Por favor, introduzca una contraseña",
+  "Missing email": "Por favor, introduzca un correo electrónico",
+  "Missing email or username": "Por favor, introduzca un correo electrónico",
+  default: "Ha ocurrido un error al iniciar sesión"
+});

@@ -4,7 +4,12 @@ import React, { useCallback, useState } from "react";
 
 import dynamic from "next/dynamic";
 
-import { FORM_MASKS, FORM_VALIDATIONS, INITIAL_STATE_FORM } from "./constants";
+import {
+  ERROR_MESSAGES,
+  FORM_MASKS,
+  FORM_VALIDATIONS,
+  INITIAL_STATE_FORM
+} from "./constants";
 
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/context/AuthContext";
@@ -43,8 +48,10 @@ export default function Login() {
 
       resetForm();
     } catch (error) {
-      showToast("Ha ocurrido un error", TOAST_TYPE.danger);
+      const message = ERROR_MESSAGES[error.message] || ERROR_MESSAGES.default;
+      showToast(message, TOAST_TYPE.danger);
     }
+
     setIsLoading(false);
   }, [errors, login, form, resetForm, formValidator, setIsLoading, showToast]);
 
