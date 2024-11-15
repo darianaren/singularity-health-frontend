@@ -6,9 +6,11 @@
   flex-direction: column;
   justify-content: center;
 
+  margin: auto;
   padding: 1.5rem;
   max-width: 40rem;
-  margin: auto;
+
+  z-index: 10;
 }
 
 .welcome-title {

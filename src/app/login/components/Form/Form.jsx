@@ -10,7 +10,8 @@ export default function Form({
   onSubmit,
   password,
   resetErrors,
-  changeHandler
+  handleChange,
+  blurValidator
 }) {
   return (
     <section className={styles["form-container"]}>
@@ -23,9 +24,10 @@ export default function Form({
             name="email"
             value={email}
             placeholder="EMAIL"
-            error={"errors.email"}
+            error={errors.email}
             onClick={resetErrors}
-            onInput={changeHandler}
+            onInput={handleChange}
+            onBlur={blurValidator}
           />
           <Input
             id="password"
@@ -33,9 +35,10 @@ export default function Form({
             name="password"
             value={password}
             onClick={resetErrors}
+            onInput={handleChange}
+            onBlur={blurValidator}
             error={errors.password}
             placeholder="CONTRASEÑA"
-            onInput={changeHandler}
           />
         </div>
         <a href="#" className={styles["forgot-password"]}>

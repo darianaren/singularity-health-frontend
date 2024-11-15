@@ -4,7 +4,7 @@ import React, { useCallback } from "react";
 
 import dynamic from "next/dynamic";
 
-import { INITIAL_STATE_FORM } from "./constants";
+import { FORM_MASKS, FORM_VALIDATIONS, INITIAL_STATE_FORM } from "./constants";
 
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/context/AuthContext";
@@ -15,14 +15,33 @@ const Form = dynamic(() => import("./components/Form/Form"));
 export default function Login() {
   const { login } = useAuth();
 
-  const { form, errors, resetErrors, resetHandler, changeHandler } = useForm(
-    INITIAL_STATE_FORM
-    // branchOfficeValidation
-  );
+  const {
+    form,
+    errors,
+    resetForm,
+    resetErrors,
+    handleChange,
+    formValidator,
+    blurValidator
+  } = useForm({
+    applyMask: FORM_MASKS,
+    validateForm: FORM_VALIDATIONS,
+    initialForm: INITIAL_STATE_FORM
+  });
 
   const onSubmit = useCallback(
-    (event) => login({ event, ...form }),
-    [login, form]
+    async (event) => {
+      event.preventDefault();
+
+      formValidator();
+
+      if (Object.keys(errors).length) return null;
+
+      await login(form);
+
+      resetForm();
+    },
+    [errors, login, form, resetForm, formValidator]
   );
 
   return (
@@ -38,8 +57,8 @@ export default function Login() {
         errors={errors}
         onSubmit={onSubmit}
         resetErrors={resetErrors}
-        resetHandler={resetHandler}
-        changeHandler={changeHandler}
+        handleChange={handleChange}
+        blurValidator={blurValidator}
       />
     </main>
   );
