@@ -49,22 +49,24 @@ const Toast = ({
   if (!message || !resetToast) return null;
 
   return (
-    <Portal containerId="toast">
+    <Portal portalId="alert">
       <div
-        role="alert"
-        tabIndex="0"
-        aria-live="polite"
-        onClick={resetToast}
-        aria-label="Cerrar alerta"
-        className={`${styles.toast} ${toastStyle} ${
-          isVisible ? styles.visible : styles.hidden
-        }`}
+        className={`${styles["toast-container"]} ${isVisible ? styles.visible : styles.hidden}`}
       >
-        <p className={styles.message}>
-          {renderWarningText}
-          {message}
-          {renderErrorTryAgain}
-        </p>
+        <div
+          role="alert"
+          tabIndex="0"
+          aria-live="polite"
+          onClick={resetToast}
+          aria-label="Cerrar alerta"
+          className={`${styles.toast} ${toastStyle}`}
+        >
+          <p className={styles.message}>
+            {renderWarningText}
+            {message}
+            {renderErrorTryAgain}
+          </p>
+        </div>
       </div>
     </Portal>
   );

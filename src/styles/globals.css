@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+}
+
 h1 {
   font-family: var(--font-museo-sans-regular);
 }
