@@ -1,0 +1,26 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 12px 30px;
+  border: none;
+  box-shadow: 2px 3px 4px #00000029;
+  font-size: 1rem;
+}
+.input::placeholder {
+  color: #a4afb7;
+}
+.input::-ms-input-placeholder {
+  color: #a4afb7;
+}
+
+.error {
+  border: solid 1px var(--unnamed-color-ff6752);
+}
+
+.error-text {
+  font-size: 0.8rem;
+  color: var(--unnamed-color-ff6752);
+}
