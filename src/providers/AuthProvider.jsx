@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import { redirect } from "next/navigation";
 
@@ -41,30 +41,35 @@ export function AuthProvider({ children }) {
    *
    * @returns {Promise<void>} Resolves when the login is successful and the session is set.
    */
-  const login = async ({ email, password }) => {
-    if (!email) throw new Error("Missing email");
-    if (!password) throw new Error("Missing password");
+  const login = useCallback(
+    async ({ event, email, password }) => {
+      console.log("holaaaaaaaaaaaaaaaaaa");
+      if (event) event.preventDefault();
+      if (!email) throw new Error("Missing email");
+      if (!password) throw new Error("Missing password");
 
-    try {
-      const { token } = await (
-        await import("@/services/fetchServices")
-      ).fetchServices.post({
-        email,
-        password,
-        endpoint
-      });
+      try {
+        const { token } = await (
+          await import("@/services/fetchServices")
+        ).fetchServices.post({
+          email,
+          password,
+          endpoint
+        });
 
-      setIsLoggedUser(true);
-      (await import("@/utils/cookies")).setCookie({
-        name: cookieName,
-        value: token
-      });
-      redirect("/");
-    } catch (error) {
-      console.error("Error en el login:", error);
-      throw error;
-    }
-  };
+        setIsLoggedUser(true);
+        (await import("@/utils/cookies")).setCookie({
+          name: cookieName,
+          value: token
+        });
+        redirect("/");
+      } catch (error) {
+        console.error("Error en el login:", error);
+        throw error;
+      }
+    },
+    [cookieName, endpoint]
+  );
 
   /**
    * Logs out the user by clearing the session state and deleting the user token cookie.
@@ -75,11 +80,11 @@ export function AuthProvider({ children }) {
    * @function logout
    * @returns {void}
    */
-  const logout = async () => {
+  const logout = useCallback(async () => {
     setIsLoggedUser(false);
     (await import("@/utils/cookies")).deleteCookie(cookieName);
     redirect("/login");
-  };
+  }, [cookieName]);
 
   return (
     <AuthContext.Provider value={{ login, logout, isLoggedUser }}>
