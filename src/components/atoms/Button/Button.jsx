@@ -5,6 +5,9 @@ import { buttonReducer } from "./reducer";
 import { ACTIONS_TYPES, INITIAL_STATE } from "./constants";
 
 /**
+ * @module Button
+ *
+ * @description
  * Button component that implements a ripple effect on click.
  *
  * @component
@@ -14,7 +17,7 @@ import { ACTIONS_TYPES, INITIAL_STATE } from "./constants";
  * @property {React.ReactNode} props.children - Child elements to be rendered inside the button.
  * @property {boolean} [props.isLoading=false] - Indicates if the button should show a loading content.
  * @property {Object} props.opts - Additional options for the button element.
- * @returns {React.ReactElement} A styled button element with ripple effects.
+ * @returns {React.Component} A styled button element with ripple effects.
  */
 const Button = ({
   opts,
