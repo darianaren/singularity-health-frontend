@@ -11,7 +11,6 @@ export default function Form({
   onSubmit,
   password,
   isLoading,
-  resetErrors,
   handleChange,
   blurValidator
 }) {
@@ -27,7 +26,6 @@ export default function Form({
             value={email}
             placeholder="EMAIL"
             error={errors.email}
-            onClick={resetErrors}
             onInput={handleChange}
             onBlur={blurValidator}
           />
@@ -36,7 +34,6 @@ export default function Form({
             type="password"
             name="password"
             value={password}
-            onClick={resetErrors}
             onInput={handleChange}
             onBlur={blurValidator}
             error={errors.password}

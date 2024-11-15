@@ -21,7 +21,6 @@ export default function Login() {
     form,
     errors,
     resetForm,
-    resetErrors,
     handleChange,
     formValidator,
     blurValidator
@@ -59,7 +58,6 @@ export default function Login() {
         errors={errors}
         onSubmit={onSubmit}
         isLoading={isLoading}
-        resetErrors={resetErrors}
         handleChange={handleChange}
         blurValidator={blurValidator}
       />
