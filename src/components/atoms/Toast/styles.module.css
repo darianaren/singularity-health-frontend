@@ -1,42 +1,48 @@
 .toast {
-  position: fixed;
   top: 1rem;
   left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+
   padding: 1rem 2rem;
+
+  opacity: 0;
   border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 3px 4px #00000029;
+  transform: translateX(-50%);
   transition:
     transform 0.5s ease,
     opacity 0.5s ease;
-  opacity: 0;
+}
+
+.message {
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .toast.hidden {
-  transform: translateY(-100%);
   opacity: 0;
+  transform: translateY(-100%);
 }
 
 .toast.visible {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .success {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: rgb(35, 148, 224);
 }
 
 .danger {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #f73920;
 }
 
 .warning {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: #f7a714;
 }
 
 .lightenText {
-  opacity: 0.8;
+  font-weight: 400;
+  opacity: 0.9;
 }

@@ -5,6 +5,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 
 import ToastContext from "@/context/ToastContext";
+import { TOAST_TYPE } from "@/components/atoms/Toast/constants";
 
 const Toast = dynamic(() => import("@/components/atoms/Toast/Toast"), {
   ssr: false
@@ -24,15 +25,15 @@ export const ToastProvider = ({ children }) => {
   const [toastInfo, setToastInfo] = useState({
     show: false,
     message: "",
-    type: "success"
+    type: TOAST_TYPE.success
   });
 
   const resetToast = useCallback(
-    () => setToastInfo({ show: false, message: "", type: "success" }),
+    () => setToastInfo({ show: false, message: "", type: TOAST_TYPE.success }),
     []
   );
 
-  const showToast = useCallback((message, type = "success") => {
+  const showToast = useCallback((message, type = TOAST_TYPE.success) => {
     setToastInfo({ show: true, message, type });
   }, []);
 

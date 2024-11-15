@@ -9,6 +9,7 @@ import { FORM_MASKS, FORM_VALIDATIONS, INITIAL_STATE_FORM } from "./constants";
 import useForm from "@/hooks/useForm";
 import { useAuth } from "@/context/AuthContext";
 import { useToast } from "@/context/ToastContext";
+import { TOAST_TYPE } from "@/components/atoms/Toast/constants";
 
 const Aside = dynamic(() => import("./components/Aside/Aside"));
 const Form = dynamic(() => import("./components/Form/Form"));
@@ -42,17 +43,17 @@ export default function Login() {
 
       resetForm();
     } catch (error) {
-      showToast("Ha ocurrido un error", "danger");
+      showToast("Ha ocurrido un error", TOAST_TYPE.danger);
     }
     setIsLoading(false);
   }, [errors, login, form, resetForm, formValidator, setIsLoading, showToast]);
 
   const handleRegister = useCallback(
-    () => showToast("Página en construcción", "warning"),
+    () => showToast("Página en construcción", TOAST_TYPE.warning),
     [showToast]
   );
   const handleRecoverPassword = useCallback(
-    () => showToast("Su contraseña es: reqres.in", "success"),
+    () => showToast("Su contraseña es: reqres.in", TOAST_TYPE.success),
     [showToast]
   );
 

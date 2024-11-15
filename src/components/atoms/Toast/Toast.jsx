@@ -1,56 +1,50 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
 
 import Portal from "../Portal/Portal";
 
 import styles from "./styles.module.css";
+import { TOAST_STYLES, TOAST_TYPE } from "./constants";
 
 const Toast = ({
   message,
   resetToast,
   lifeTime = 6000,
-  type = "success",
-  showRetryText = true
+  showRetryText = true,
+  type = TOAST_TYPE.success
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    const timerIn = setTimeout(() => setIsVisible(true), 10);
 
-    const timeout = setTimeout(() => {
+    const timerOut = setTimeout(() => {
       setIsVisible(false);
       setTimeout(resetToast, 500);
     }, lifeTime);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timerIn);
+      clearTimeout(timerOut);
+    };
   }, [lifeTime, resetToast]);
 
-  const toastStyle = useCallback((toastType) => {
-    const toastStyles = Object.freeze({
-      danger: styles.danger,
-      success: styles.success,
-      warning: styles.warning
-    });
+  const toastStyle = TOAST_STYLES[type] || TOAST_STYLES.success;
 
-    return toastStyles[toastType] ?? toastStyles.success;
-  }, []);
+  const renderErrorTryAgain =
+    type === TOAST_TYPE.danger && showRetryText ? (
+      <span className={`${styles.message} ${styles.lightenText}`}>
+        . intenta nuevamente
+      </span>
+    ) : null;
 
-  const renderErrorTryAgain = useCallback(
-    (type) =>
-      type === "danger" && showRetryText ? (
-        <span className={styles.lightenText}>intenta nuevamente</span>
-      ) : null,
-    [showRetryText]
-  );
-
-  const renderWarningText = useCallback(
-    (type) =>
-      type === "warning" && showRetryText ? (
-        <span className={styles.lightenText}>advertencia. </span>
-      ) : null,
-    [showRetryText]
-  );
+  const renderWarningText =
+    type === TOAST_TYPE.warning && showRetryText ? (
+      <span className={`${styles.message} ${styles.lightenText}`}>
+        advertencia.{" "}
+      </span>
+    ) : null;
 
   if (!message || !resetToast) return null;
 
@@ -62,14 +56,14 @@ const Toast = ({
         aria-live="polite"
         onClick={resetToast}
         aria-label="Cerrar alerta"
-        className={`${styles.toast} ${toastStyle(type)} ${
+        className={`${styles.toast} ${toastStyle} ${
           isVisible ? styles.visible : styles.hidden
         }`}
       >
         <p className={styles.message}>
-          {renderWarningText(type)}
+          {renderWarningText}
           {message}
-          {renderErrorTryAgain(type)}
+          {renderErrorTryAgain}
         </p>
       </div>
     </Portal>
