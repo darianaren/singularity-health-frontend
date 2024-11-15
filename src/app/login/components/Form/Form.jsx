@@ -2,7 +2,14 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
-export default function Form() {
+export default function Form({
+  email,
+  password,
+  errors,
+  resetErrors,
+  resetHandler,
+  changeHandler
+}) {
   return (
     <div className={styles.formContainer}>
       <h2 className={styles.welcomeTitle}>BIENVENIDO</h2>
