@@ -1,11 +1,10 @@
 "use client";
+
 import React, { useState } from "react";
 
 import { redirect } from "next/navigation";
 
 import AuthContext from "@/context/AuthContext";
-import { fetchServices } from "@/services/fetchServices";
-import { deleteCookie, setCookie } from "@/utils/cookies";
 
 export function AuthProvider({ children }) {
   /**
@@ -47,14 +46,19 @@ export function AuthProvider({ children }) {
     if (!password) throw new Error("Missing password");
 
     try {
-      const { token } = await fetchServices.post({
+      const { token } = await (
+        await import("@/services/fetchServices")
+      ).fetchServices.post({
         email,
         password,
         endpoint
       });
 
       setIsLoggedUser(true);
-      setCookie({ name: cookieName, value: token });
+      (await import("@/utils/cookies")).setCookie({
+        name: cookieName,
+        value: token
+      });
       redirect("/");
     } catch (error) {
       console.error("Error en el login:", error);
@@ -71,9 +75,9 @@ export function AuthProvider({ children }) {
    * @function logout
    * @returns {void}
    */
-  const logout = () => {
+  const logout = async () => {
     setIsLoggedUser(false);
-    deleteCookie(cookieName);
+    (await import("@/utils/cookies")).deleteCookie(cookieName);
     redirect("/login");
   };
 
