@@ -42,29 +42,23 @@ export function AuthProvider({ children }) {
    * @returns {Promise<void>} Resolves when the login is successful and the session is set.
    */
   const login = useCallback(
-    async ({ email, password }) => {
-      if (!email) throw new Error("Missing email");
-      if (!password) throw new Error("Missing password");
+    async (userCredentials) => {
+      if (!userCredentials.email) throw new Error("Missing email");
+      if (!userCredentials.password) throw new Error("Missing password");
 
-      try {
-        const { token } = await (
-          await import("@/services/fetchServices")
-        ).fetchServices.post({
-          email,
-          password,
-          endpoint
-        });
+      const { token } = await (
+        await import("@/services/fetchServices")
+      ).fetchServices.post({
+        body: userCredentials,
+        endpoint
+      });
 
-        setIsLoggedUser(true);
-        (await import("@/utils/cookies")).setCookie({
-          name: cookieName,
-          value: token
-        });
-        redirect("/");
-      } catch (error) {
-        console.error("Error en el login:", error);
-        throw error;
-      }
+      setIsLoggedUser(true);
+      (await import("@/utils/cookies")).setCookie({
+        name: cookieName,
+        value: token
+      });
+      redirect("/");
     },
     [cookieName, endpoint]
   );
