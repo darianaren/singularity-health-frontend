@@ -1,31 +1,39 @@
 .aside {
-  position: relative;
-
-  width: 70vh;
+  display: none;
 }
 
-.bg-login {
-  width: auto !important;
-  height: 100vh !important;
-}
+@media (min-aspect-ratio: 5/4) {
+  .aside {
+    display: block;
 
-.logo {
-  max-width: 25vh;
-  max-height: 25vh;
-}
+    position: relative;
 
-.logo-container {
-  position: absolute;
-  top: 50%;
-  left: 15vh;
+    width: 70vh;
+  }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .bg-login {
+    width: auto !important;
+    height: 100vh !important;
+  }
 
-  padding: 6vh;
+  .logo {
+    max-width: 25vh;
+    max-height: 25vh;
+  }
 
-  border-radius: 50%;
-  background-color: #fff;
-  transform: translateY(-50%);
+  .logo-container {
+    position: absolute;
+    top: 50%;
+    left: 15vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6vh;
+
+    border-radius: 50%;
+    background-color: #fff;
+    transform: translateY(-50%);
+  }
 }
