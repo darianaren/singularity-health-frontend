@@ -30,19 +30,14 @@ const fetchService =
       config.body = JSON.stringify(body);
     }
 
-    try {
-      const response = await fetch(endpoint, config);
-      const data = await response.json();
+    const response = await fetch(endpoint, config);
+    const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Error in the request");
-      }
-
-      return data;
-    } catch (error) {
-      console.error("Error in the request:", error);
-      throw error;
+    if (!response.ok) {
+      throw new Error(data.error || "Error in the request");
     }
+
+    return data;
   };
 
 export const fetchServices = {
