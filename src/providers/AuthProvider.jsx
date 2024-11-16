@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -9,17 +9,6 @@ import { ROUTES_NAME, ROUTES_NAME_VALUE } from "@/utils/constants/routesNames";
 
 export function AuthProvider({ children }) {
   const { push } = useRouter();
-  /**
-   * State variable to manage user session status.
-   *
-   * @constant {boolean} isLoggedUser - Indicates the user's login status.
-   * @default false
-   * - `false`: User session is closed (user is logged out).
-   * - `true`: User session is open and should remain active (user is logged in).
-   *
-   * @function setIsLoggedUser - Function to update the `isLoggedUser` state.
-   */
-  const [isLoggedUser, setIsLoggedUser] = useState(false);
 
   /* Es recomendable guardar información sensible, como el endpoint de la API y el nombre del token,
       únicamente en variables de entorno o archivos de configuración.
@@ -55,8 +44,6 @@ export function AuthProvider({ children }) {
         endpoint
       });
 
-      setIsLoggedUser(true);
-
       (await import("@/utils/cookies")).setCookie({
         name: cookieName,
         value: token
@@ -77,15 +64,13 @@ export function AuthProvider({ children }) {
    * @returns {void}
    */
   const logout = useCallback(async () => {
-    setIsLoggedUser(false);
-
     (await import("@/utils/cookies")).deleteCookie(cookieName);
 
     push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.login]);
   }, [cookieName, push]);
 
   return (
-    <AuthContext.Provider value={{ login, logout, isLoggedUser }}>
+    <AuthContext.Provider value={{ login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -12,7 +12,6 @@ import {
   ROUTES_NAME_VALUE,
   VALID_ROUTES_NAME
 } from "@/utils/constants/routesNames";
-import { useAuth } from "@/context/AuthContext";
 import NotFoundLayout from "@/layouts/404Layout/404Layout";
 import { useToast } from "@/context/ToastContext";
 import { TOAST_TYPE } from "@/components/atoms/Toast/constants";
@@ -23,7 +22,6 @@ export default function Slug() {
   const router = useRouter();
   const pathname = usePathname();
   const { showToast } = useToast();
-  const { isLoggedUser } = useAuth();
 
   const path = pathname.slice(1);
   const isValidPathName = VALID_ROUTES_NAME.includes(path);
@@ -49,16 +47,15 @@ export default function Slug() {
     [showToast]
   );
 
+  const handleReturn = useCallback(
+    () => router.push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.home]),
+    [router]
+  );
+
   const parsedFooterElements = FOOTER_ELEMENTS({
     constructionMessage,
     newsletterMessage
   });
-
-  useEffect(() => {
-    if (isValidPathName && !isLoggedUser) {
-      router.push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.login]);
-    }
-  }, [isValidPathName, isLoggedUser, router]);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -66,7 +63,7 @@ export default function Slug() {
         const pageContent = await import(`@/content/${path}.js`);
         setContent(pageContent.default);
       } catch (error) {
-        console.error("Content not found for route:", path);
+        console.log("Content not found for route:", path);
       }
     };
 
@@ -81,6 +78,9 @@ export default function Slug() {
       footerContent={{ elements: parsedFooterElements }}
     />
   ) : (
-    <NotFoundLayout />
+    <NotFoundLayout
+      handleReturn={handleReturn}
+      navContent={{ routes: NAV_ROUTES }}
+    />
   );
 }
