@@ -18,7 +18,6 @@ export function middleware(request) {
   const loginPath = "/" + ROUTES_NAME_VALUE[ROUTES_NAME.login];
   const homePath = "/" + ROUTES_NAME_VALUE[ROUTES_NAME.home];
 
-  console.log("soy el middleware");
   if (!token && url.pathname !== loginPath) {
     return NextResponse.redirect(new URL(loginPath, request.url));
   }
