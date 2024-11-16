@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter, usePathname } from "next/navigation";
 
+import { NAV_ROUTES } from "./constants";
+
 import {
   ROUTES_NAME,
   ROUTES_NAME_VALUE,
@@ -48,7 +50,12 @@ export default function Slug() {
   }, [router, path]);
 
   return isValidPathName ? (
-    <HomeLayout {...content} isLoading={isLoading} />
+    <HomeLayout
+      {...content}
+      isLoading={isLoading}
+      navContent={{ routes: NAV_ROUTES }}
+      footerContent={{ routes: NAV_ROUTES }}
+    />
   ) : (
     <NotFoundLayout />
   );

@@ -23,21 +23,23 @@ const NavBar = dynamic(() => import("@/components/organisms/NavBar/NavBar"));
 
 const HomeLayout = ({
   isLoading,
+  navContent,
+  aboutContent,
+  footerContent,
+  reviewsContent,
   greetingContent,
   servicesContent,
-  reviewsContent,
-  aboutContent,
   franchiseContent
 }) => {
   return (
     <div>
-      <NavBar />
+      <NavBar {...navContent} />
       <GreetingSection {...greetingContent} isLoading={isLoading} />
       <OurServicesSection {...servicesContent} isLoading={isLoading} />
       <ReviewsSection {...reviewsContent} isLoading={isLoading} />
       <AboutUsSection {...aboutContent} isLoading={isLoading} />
       <FranchiseSection {...franchiseContent} isLoading={isLoading} />
-      <Footer />
+      <Footer {...footerContent} />
     </div>
   );
 };
