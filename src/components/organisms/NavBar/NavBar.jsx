@@ -6,11 +6,15 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "public/icons/logo.svg";
 import { usePathname } from "next/navigation";
+import logoutIcon from "public/images/logout.png";
 
 import styles from "./styles.module.css";
 
-import { ROUTES_NAME, ROUTES_NAME_VALUE } from "@/utils/constants/routesNames";
+import { useAuth } from "@/context/AuthContext";
+import { useToast } from "@/context/ToastContext";
 import HamburgerMenu from "@/components/atoms/HamburgerMenu/HamburguerMenu";
+import { ROUTES_NAME, ROUTES_NAME_VALUE } from "@/utils/constants/routesNames";
+import { TOAST_TYPE } from "@/components/atoms/Toast/constants";
 
 /**
  * @module Navbar
@@ -29,12 +33,19 @@ import HamburgerMenu from "@/components/atoms/HamburgerMenu/HamburguerMenu";
  */
 
 const Navbar = ({ routes }) => {
+  const { logout } = useAuth();
   const pathname = usePathname();
+  const { showToast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [setIsOpen]);
 
-  const closeMenu = useCallback(() => setIsOpen(false), [setIsOpen]);
+  const closeMenu = () => setIsOpen(false);
+
+  const handleLogout = () => {
+    logout();
+    showToast("See you next time!", TOAST_TYPE.success);
+  };
 
   return (
     <header className={styles.header}>
@@ -68,6 +79,15 @@ const Navbar = ({ routes }) => {
             {item.name}
           </Link>
         ))}
+        <Image
+          alt="Logout"
+          width={20}
+          height={20}
+          title="Logout"
+          src={logoutIcon}
+          onClick={handleLogout}
+          className={styles["logout-icon"]}
+        />
       </nav>
     </header>
   );
