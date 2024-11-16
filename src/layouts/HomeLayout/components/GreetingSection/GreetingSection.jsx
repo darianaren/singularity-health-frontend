@@ -1,16 +1,30 @@
 import React from "react";
 
+import Image from "next/image";
+import golden from "public/images/golden-retriever@2x.png";
+
 import styles from "./styles.module.css";
+
+import Button from "@/components/atoms/Button/Button";
 
 const GreetingSection = ({ title, body, isLoading }) => {
   return (
     <section
       className={`${styles["greeting-container"]} ${isLoading ? styles.loading : ""}`}
     >
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.body}>{body}</p>
-      <button>Schedule Service</button>
-      <label>Or Call 866.338.2463</label>
+      <article className={styles["text-container"]}>
+        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.body}>{body}</p>
+        <Button>Schedule Service</Button>
+        <label className={styles.text}>Or Call 866.338.2463</label>
+      </article>
+      <div className={styles["circle-container"]}>
+        <Image
+          src={golden}
+          alt="Welcome to Fetch!"
+          className={styles["dog-image"]}
+        />
+      </div>
     </section>
   );
 };

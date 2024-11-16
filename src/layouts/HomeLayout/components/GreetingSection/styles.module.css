@@ -16,7 +16,24 @@
 }
 
 .text-container {
-  max-width: 50%;
+  max-width: 48%;
+}
+
+.title {
+  color: #fff;
+  font-size: 3.5vw;
+}
+
+.body {
+  color: #fff;
+  max-width: 75%;
+  font-size: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.text {
+  color: #fff;
+  margin-left: 1rem;
 }
 
 .circle-container {
