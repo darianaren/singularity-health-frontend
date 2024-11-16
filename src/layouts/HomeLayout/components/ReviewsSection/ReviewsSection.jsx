@@ -1,13 +1,19 @@
 import React from "react";
 
 import styles from "./styles.module.css";
+import { parsedCards } from "./utils";
 
-const ReviewsSection = ({ title, body }) => {
+import Carousel from "@/components/molecules/Carousel/Carousel";
+
+const ReviewsSection = ({ title, body, reviewers = [] }) => {
+  console.log(reviewers);
+  const cards = parsedCards({ reviewers, body });
   return (
-    <section className={styles["about-us-container"]}>
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.body}>Card: {body}</p>
-      {/* usar https://reqres.in/api/users */}
+    <section className={styles["reviews-container"]}>
+      <h2 className={styles.title}>
+        {title || "Looking for opinions from our users..."}
+      </h2>
+      <Carousel cards={cards} />
     </section>
   );
 };

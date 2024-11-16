@@ -24,6 +24,7 @@ const Footer = dynamic(() => import("@/components/organisms/Footer/Footer"));
 const NavBar = dynamic(() => import("@/components/organisms/NavBar/NavBar"));
 
 const HomeLayout = ({
+  usersData,
   navContent,
   aboutContent,
   footerContent,
@@ -42,7 +43,7 @@ const HomeLayout = ({
           {...servicesContent}
           handleLocation={actionMessage}
         />
-        <ReviewsSection {...reviewsContent} />
+        <ReviewsSection {...reviewsContent} reviewers={usersData} />
         <AboutUsSection {...aboutContent} handleLocation={actionMessage} />
         <FranchiseSection
           {...franchiseContent}
