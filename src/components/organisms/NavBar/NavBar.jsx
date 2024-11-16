@@ -45,8 +45,8 @@ const Navbar = ({ routes }) => {
       >
         <Image
           src={logo}
-          width={30}
-          height={30}
+          width={40}
+          height={40}
           style={styles.logo}
           alt="Fetch: Pet Caretakers"
         />
