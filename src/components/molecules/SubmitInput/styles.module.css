@@ -1,0 +1,35 @@
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 60px;
+  padding: 0 0.45rem 0 1.5rem;
+
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.input {
+  flex-grow: 1;
+
+  font-size: 1rem;
+  color: #808080;
+
+  height: 100%;
+
+  border: none;
+  background: none;
+}
+.input::placeholder {
+  color: #808080;
+}
+.input::-ms-input-placeholder {
+  color: #808080;
+}
+.input:focus {
+  outline: none; /* Quitar el borde de enfoque por defecto */
+  box-shadow: none; /* Quitar cualquier sombra */
+  border: none; /* Si tienes bordes que quieras quitar */
+}
