@@ -16,7 +16,7 @@
 }
 
 .body {
-  font-size: 1.15rem;
+  font-size: max(1.15vw, 1rem);
 
   max-width: 75%;
   margin: 1.5rem 0;
@@ -37,7 +37,7 @@
   display: none;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 950px) {
   .text-container {
     display: flex;
     align-items: center;
@@ -46,7 +46,7 @@
   }
 }
 
-@media (min-width: 750px) {
+@media (min-width: 950px) {
   .greeting-container {
     display: flex;
     flex-wrap: wrap;

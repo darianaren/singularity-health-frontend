@@ -11,8 +11,8 @@ const GreetingSection = ({ title, body, handleSchedule }) => {
   return (
     <section className={styles["greeting-container"]}>
       <article className={styles["text-container"]}>
-        <h1 className={styles.title}>{title || "Cargando..."}</h1>
-        <p className={styles.body}>{body}</p>
+        <h1 className={styles.title}>{title || "Loading..."}</h1>
+        <p className={styles.body}>{body || "Please wait a moment."}</p>
         <div className={styles.footer}>
           <Button style={{ margin: "0" }} onClick={handleSchedule}>
             Schedule Service
