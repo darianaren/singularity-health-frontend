@@ -1,94 +1,76 @@
 "use client";
-import React from "react";
+
+import React, { useCallback, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 import logo from "public/icons/logo.svg";
 import { usePathname } from "next/navigation";
 
+import styles from "./styles.module.css";
+
 import { ROUTES_NAME, ROUTES_NAME_VALUE } from "@/utils/constants/routesNames";
+import HamburgerMenu from "@/components/atoms/HamburgerMenu/HamburguerMenu";
 
-const Navbar = () => {
+/**
+ * @module Navbar
+ *
+ * @description
+ * The `Navbar` component is a responsive navigation bar that includes a logo, a hamburger menu for mobile view,
+ * and dynamic navigation links. The menu state is managed with React's `useState` and provides accessibility features.
+ *
+ * @component
+ * @param {Object} props - Properties passed to the `Navbar` component.
+ * @param {Array} props.routes - An array of route objects used to dynamically render navigation links.
+ * @param {string} props.routes[].path - The URL path of the route.
+ * @param {string} props.routes[].name - The display name of the route.
+ *
+ * @returns {React.Component} A responsive navigation bar with a logo, dynamic links, and a hamburger menu.
+ */
+
+const Navbar = ({ routes }) => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { name: "Location", path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME.location] },
-    { name: "Blog", path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME.blog] },
-    { name: "Services", path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME.services] },
-    {
-      name: "About Us",
-      path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME["about-us"]]
-    },
-    {
-      name: "Franchise with Us",
-      path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME.franchise]
-    }
-  ];
+  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [setIsOpen]);
+
+  const closeMenu = useCallback(() => setIsOpen(false), [setIsOpen]);
 
   return (
-    <nav style={styles.nav}>
-      <div style={styles.logoContainer}>
+    <header className={styles.header}>
+      <Link
+        onClick={closeMenu}
+        className={styles["logo-container"]}
+        href={"/" + ROUTES_NAME_VALUE[ROUTES_NAME.home]}
+      >
         <Image
           src={logo}
-          alt="Fetch: Pet Caretakers"
-          width={40}
-          height={40}
+          width={30}
+          height={30}
           style={styles.logo}
+          alt="Fetch: Pet Caretakers"
         />
+      </Link>
+      <div className={styles["btn-menu-container"]}>
+        <HamburgerMenu isOpen={isOpen} handleClick={toggleMenu} />
       </div>
-
-      <div style={styles.navLinks}>
-        {navItems.map((item) => (
+      <nav
+        className={`${styles["nav-container"]} ${isOpen ? styles["is-open"] : styles["is-close"]}`}
+      >
+        {routes?.map((item, index) => (
           <Link
             key={item.path}
             href={item.path}
-            style={{
-              ...styles.link,
-              ...(pathname === item.path ? styles.active : {}) // Aplica estilo si está activo
-            }}
+            onClick={closeMenu}
+            style={{ "--i": index }}
+            className={`${styles.link} ${pathname === item.path ? styles.active : ""}`}
           >
             {item.name}
           </Link>
         ))}
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
-};
-
-const styles = {
-  nav: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 2rem",
-    backgroundColor: "#FF623F", // Color naranja del fondo
-    height: "60px"
-  },
-  logoContainer: {
-    display: "flex",
-    alignItems: "center"
-  },
-  logo: {
-    borderRadius: "50%", // Hace que el logo tenga bordes redondeados
-    backgroundColor: "white",
-    padding: "5px"
-  },
-  navLinks: {
-    display: "flex",
-    gap: "2rem"
-  },
-  link: {
-    textDecoration: "none",
-    color: "white",
-    fontWeight: "500",
-    fontSize: "1rem",
-    transition: "color 0.3s ease"
-  },
-  active: {
-    color: "#FFD700", // Color para el enlace activo (dorado)
-    fontWeight: "bold", // Resalta el texto del enlace activo
-    borderBottom: "2px solid #FFD700" // Línea inferior para destacar el enlace
-  }
 };
 
 export default Navbar;
