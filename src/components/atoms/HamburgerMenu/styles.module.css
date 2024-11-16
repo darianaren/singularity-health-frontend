@@ -1,0 +1,38 @@
+.hamburger {
+  display: flex;
+  flex-direction: column;
+
+  border: 0;
+  width: 20px;
+  height: 16px;
+  background: transparent;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+.hamburger:hover > span {
+  box-shadow: 0 0 15px #fff;
+}
+
+.hamburger.open > span:nth-child(1) {
+  transform: rotate(45deg);
+}
+.hamburger.open > span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open > span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.hamburger > span {
+  height: 2.25px;
+  width: 100%;
+
+  border-radius: 10px;
+  background-color: white;
+
+  cursor: pointer;
+  transition: all 0.5s;
+  transform-origin: left;
+}
