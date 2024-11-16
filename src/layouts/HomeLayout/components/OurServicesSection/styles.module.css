@@ -1,6 +1,11 @@
 .our-services-container {
+  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
   width: 100vw;
-  height: 80.5vw;
+  min-height: 80.5vw;
   padding: 0 1rem;
 
   z-index: 2;
@@ -8,4 +13,67 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top center;
+}
+
+.cards-container {
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+
+  width: max-content;
+  height: min-content;
+}
+
+.card {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+
+  width: 15vw;
+  height: 15vw;
+  min-width: 10rem;
+  min-height: 10rem;
+  max-width: 15rem;
+  max-height: 15rem;
+  padding: max(2vw, 1rem);
+
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.text-container {
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: max(2vw, 1.25rem);
+}
+
+.body {
+  font-size: max(1.15vw, 1rem);
+}
+
+.subtitle {
+  color: var(--unnamed-color-ff6752);
+}
+
+.text-image {
+  font-family: var(--font-confortaa-regular);
+}
+
+@media (min-width: 950px) {
+  .our-services-container {
+    justify-content: space-between;
+
+    padding: 15vw 10% 0;
+  }
+
+  .text-container {
+    width: 40%;
+  }
 }
