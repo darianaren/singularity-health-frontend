@@ -1,0 +1,11 @@
+.our-services-container {
+  width: 100vw;
+  height: 80.5vw;
+  padding: 0 1rem;
+
+  z-index: 2;
+  background: url("/backgrounds/bg-home-blue.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+}

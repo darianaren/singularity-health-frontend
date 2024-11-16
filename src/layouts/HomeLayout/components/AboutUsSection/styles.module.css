@@ -1,0 +1,10 @@
+.about-us-container {
+  width: 100vw;
+  height: 77vw;
+  padding: 0 1rem;
+
+  background: url("/backgrounds/bg-home-yellow.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+}

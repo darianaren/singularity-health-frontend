@@ -38,10 +38,16 @@ const HomeLayout = ({
       <NavBar {...navContent} />
       <div className={styles["layout-container"]}>
         <GreetingSection {...greetingContent} handleSchedule={actionMessage} />
-        <OurServicesSection {...servicesContent} />
+        <OurServicesSection
+          {...servicesContent}
+          handleLocation={actionMessage}
+        />
         <ReviewsSection {...reviewsContent} />
-        <AboutUsSection {...aboutContent} />
-        <FranchiseSection {...franchiseContent} />
+        <AboutUsSection {...aboutContent} handleLocation={actionMessage} />
+        <FranchiseSection
+          {...franchiseContent}
+          handleFranchise={actionMessage}
+        />
         <Footer {...footerContent} />
       </div>
     </>

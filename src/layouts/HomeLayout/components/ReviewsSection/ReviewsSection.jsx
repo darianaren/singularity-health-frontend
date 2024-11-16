@@ -2,11 +2,9 @@ import React from "react";
 
 import styles from "./styles.module.css";
 
-const ReviewsSection = ({ title, body, isLoading }) => {
+const ReviewsSection = ({ title, body }) => {
   return (
-    <section
-      className={`${styles["about-us-container"]} ${isLoading ? styles.loading : ""}`}
-    >
+    <section className={styles["about-us-container"]}>
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.body}>Card: {body}</p>
       {/* usar https://reqres.in/api/users */}
