@@ -13,11 +13,11 @@ import { ROUTES_NAME, ROUTES_NAME_VALUE } from "./utils/constants/routesNames";
  */
 export function middleware(request) {
   const token = request.cookies.get("userToken");
+  const url = request.nextUrl;
+  const loginPath = "/" + ROUTES_NAME_VALUE[ROUTES_NAME.login];
 
-  if (!token) {
-    return NextResponse.redirect(
-      new URL("/" + ROUTES_NAME_VALUE[ROUTES_NAME.login], request.url)
-    );
+  if (!token && url.pathname !== loginPath) {
+    return NextResponse.redirect(new URL(loginPath, request.url));
   }
 
   return NextResponse.next();
@@ -25,11 +25,11 @@ export function middleware(request) {
 
 /**
  * Configuration object for the middleware to specify which paths the middleware should apply to.
- * In this case, the middleware will be applied to the root path ("/") and "/home" routes.
+ * In this case, the middleware will be applied to the root path ("/").
  *
  * @constant {Object} config - Configuration object for middleware matching.
  * @property {Array} matcher - List of URL paths to match for the middleware to be applied.
  */
 export const config = {
-  matcher: ["/", "/" + ROUTES_NAME_VALUE[ROUTES_NAME.home]]
+  matcher: ["/"]
 };

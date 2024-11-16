@@ -15,7 +15,7 @@ import NotFoundLayout from "@/layouts/404Layout/404Layout";
 
 const HomeLayout = dynamic(() => import("@/layouts/HomeLayout/HomeLayout"));
 
-export default function Home() {
+export default function Slug() {
   const router = useRouter();
   const pathname = usePathname();
   const { isLoggedUser } = useAuth();
