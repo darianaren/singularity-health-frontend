@@ -2,11 +2,12 @@
 
 import React, { useCallback, useState } from "react";
 
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import AuthContext from "@/context/AuthContext";
 
 export function AuthProvider({ children }) {
+  const { push } = useRouter();
   /**
    * State variable to manage user session status.
    *
@@ -54,13 +55,15 @@ export function AuthProvider({ children }) {
       });
 
       setIsLoggedUser(true);
+
       (await import("@/utils/cookies")).setCookie({
         name: cookieName,
         value: token
       });
-      redirect("/");
+
+      push("/");
     },
-    [cookieName, endpoint]
+    [cookieName, endpoint, push]
   );
 
   /**
@@ -74,9 +77,11 @@ export function AuthProvider({ children }) {
    */
   const logout = useCallback(async () => {
     setIsLoggedUser(false);
+
     (await import("@/utils/cookies")).deleteCookie(cookieName);
-    redirect("/login");
-  }, [cookieName]);
+
+    push("/login");
+  }, [cookieName, push]);
 
   return (
     <AuthContext.Provider value={{ login, logout, isLoggedUser }}>
