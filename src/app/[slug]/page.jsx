@@ -24,6 +24,7 @@ export default function Home() {
   const isValidPathName = VALID_ROUTES_NAME.includes(path);
 
   const [content, setContent] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isValidPathName && !isLoggedUser) {
@@ -33,17 +34,22 @@ export default function Home() {
 
   useEffect(() => {
     const loadContent = async () => {
+      setIsLoading(true);
       try {
         const pageContent = await import(`@/content/${path}.js`);
         setContent(pageContent.default);
       } catch (error) {
         console.error("Content not found for route:", path);
       }
+      setIsLoading(false);
     };
 
     loadContent();
   }, [router, path]);
 
-  console.log(content);
-  return isValidPathName ? <HomeLayout /> : <NotFoundLayout />;
+  return isValidPathName ? (
+    <HomeLayout {...content} isLoading={isLoading} />
+  ) : (
+    <NotFoundLayout />
+  );
 }
