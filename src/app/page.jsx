@@ -1,9 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+
+import { useEffect } from "react";
 
 import { useRouter } from "next/navigation";
 
 import { useAuth } from "@/context/AuthContext";
+import { ROUTES_NAME, ROUTES_NAME_VALUE } from "@/utils/constants/routesNames";
 
 export default function Home() {
   const router = useRouter();
@@ -11,21 +13,9 @@ export default function Home() {
 
   useEffect(() => {
     if (isLoggedUser) {
-      router.push("/");
+      router.push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.home]);
     } else {
-      router.push("/login");
+      router.push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.login]);
     }
   }, [isLoggedUser, router]);
-
-  return (
-    <div>
-      <h1>h1 Hola mundo!: We Get Pet Care!</h1>
-      <h2>h2 Hola mundo!: Our Services</h2>
-      <h3>h3 Hola mundo!</h3>
-      <p>
-        Texto: For over 17 Years, Fetch! Pet Care has been a trusted partner in
-        keeping pets healthy and happy!
-      </p>
-    </div>
-  );
 }

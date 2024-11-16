@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { ROUTES_NAME, ROUTES_NAME_VALUE } from "./utils/constants/routesNames";
+
 /**
  * Middleware function to check if the user is authenticated by verifying the presence of a valid token.
  * This function will check for the `userToken` cookie, and if it is not found, the user will be redirected
@@ -13,7 +15,9 @@ export function middleware(request) {
   const token = request.cookies.get("userToken");
 
   if (!token) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(
+      new URL("/" + ROUTES_NAME_VALUE[ROUTES_NAME.login], request.url)
+    );
   }
 
   return NextResponse.next();
@@ -27,5 +31,5 @@ export function middleware(request) {
  * @property {Array} matcher - List of URL paths to match for the middleware to be applied.
  */
 export const config = {
-  matcher: ["/", "/home"]
+  matcher: ["/", "/" + ROUTES_NAME_VALUE[ROUTES_NAME.home]]
 };

@@ -5,6 +5,7 @@ import React, { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import AuthContext from "@/context/AuthContext";
+import { ROUTES_NAME, ROUTES_NAME_VALUE } from "@/utils/constants/routesNames";
 
 export function AuthProvider({ children }) {
   const { push } = useRouter();
@@ -61,7 +62,7 @@ export function AuthProvider({ children }) {
         value: token
       });
 
-      push("/");
+      push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.home]);
     },
     [cookieName, endpoint, push]
   );
@@ -80,7 +81,7 @@ export function AuthProvider({ children }) {
 
     (await import("@/utils/cookies")).deleteCookie(cookieName);
 
-    push("/login");
+    push("/" + ROUTES_NAME_VALUE[ROUTES_NAME.login]);
   }, [cookieName, push]);
 
   return (
