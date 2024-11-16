@@ -88,6 +88,18 @@
     transform: translateY(0);
     transition-delay: calc(0.15s * var(--i));
   }
+
+  .logout-icon {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: 0.3s ease;
+  }
+
+  .nav-container.is-open > .logout-icon {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.75s;
+  }
 }
 
 @media (min-width: 950px) {
