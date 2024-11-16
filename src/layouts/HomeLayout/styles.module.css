@@ -1,0 +1,10 @@
+.layout-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+
+  margin-top: 4.9rem;
+  min-height: calc(100vh - 4.9rem);
+
+  background-color: #f3f6fb;
+}

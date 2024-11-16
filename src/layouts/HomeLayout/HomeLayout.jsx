@@ -2,6 +2,8 @@ import React from "react";
 
 import dynamic from "next/dynamic";
 
+import styles from "./styles.module.css";
+
 const GreetingSection = dynamic(
   () => import("./components/GreetingSection/GreetingSection")
 );
@@ -32,15 +34,17 @@ const HomeLayout = ({
   franchiseContent
 }) => {
   return (
-    <div>
+    <>
       <NavBar {...navContent} />
-      <GreetingSection {...greetingContent} isLoading={isLoading} />
-      <OurServicesSection {...servicesContent} isLoading={isLoading} />
-      <ReviewsSection {...reviewsContent} isLoading={isLoading} />
-      <AboutUsSection {...aboutContent} isLoading={isLoading} />
-      <FranchiseSection {...franchiseContent} isLoading={isLoading} />
-      <Footer {...footerContent} />
-    </div>
+      <div className={styles["layout-container"]}>
+        <GreetingSection {...greetingContent} isLoading={isLoading} />
+        <OurServicesSection {...servicesContent} isLoading={isLoading} />
+        <ReviewsSection {...reviewsContent} isLoading={isLoading} />
+        <AboutUsSection {...aboutContent} isLoading={isLoading} />
+        <FranchiseSection {...franchiseContent} isLoading={isLoading} />
+        <Footer {...footerContent} />
+      </div>
+    </>
   );
 };
 
