@@ -20,13 +20,13 @@ import { ACTIONS_TYPES, INITIAL_STATE } from "./constants";
  * @returns {React.Component} A styled button element with ripple effects.
  */
 const Button = ({
-  opts,
   onClick,
   children,
   disabled,
   isLoading,
   ripple = true,
-  "aria-label": ariaLabel
+  "aria-label": ariaLabel,
+  ...opts
 }) => {
   const [state, dispatch] = useReducer(buttonReducer, INITIAL_STATE);
 

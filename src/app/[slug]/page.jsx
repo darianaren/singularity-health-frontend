@@ -29,7 +29,11 @@ export default function Slug() {
   const isValidPathName = VALID_ROUTES_NAME.includes(path);
 
   const [content, setContent] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+
+  const actionMessage = useCallback(
+    () => showToast("Thank you for interacting with us!", TOAST_TYPE.success),
+    [showToast]
+  );
 
   const constructionMessage = useCallback(
     () => showToast("Page under construction", TOAST_TYPE.warning),
@@ -58,14 +62,12 @@ export default function Slug() {
 
   useEffect(() => {
     const loadContent = async () => {
-      setIsLoading(true);
       try {
         const pageContent = await import(`@/content/${path}.js`);
         setContent(pageContent.default);
       } catch (error) {
         console.error("Content not found for route:", path);
       }
-      setIsLoading(false);
     };
 
     loadContent();
@@ -74,7 +76,7 @@ export default function Slug() {
   return isValidPathName ? (
     <HomeLayout
       {...content}
-      isLoading={isLoading}
+      actionMessage={actionMessage}
       navContent={{ routes: NAV_ROUTES }}
       footerContent={{ elements: parsedFooterElements }}
     />

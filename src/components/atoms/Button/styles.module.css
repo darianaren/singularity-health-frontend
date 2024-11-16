@@ -20,7 +20,7 @@
   font-family: var(--font-open-sans-bold);
 
   margin: auto;
-  padding: 1.25vw 2.24vw;
+  padding: max(1.25vw, 1rem) max(2.24vw, 1.5rem);
   max-width: max-content;
 
   border: none;

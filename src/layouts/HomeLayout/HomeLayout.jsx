@@ -24,10 +24,10 @@ const Footer = dynamic(() => import("@/components/organisms/Footer/Footer"));
 const NavBar = dynamic(() => import("@/components/organisms/NavBar/NavBar"));
 
 const HomeLayout = ({
-  isLoading,
   navContent,
   aboutContent,
   footerContent,
+  actionMessage,
   reviewsContent,
   greetingContent,
   servicesContent,
@@ -37,11 +37,11 @@ const HomeLayout = ({
     <>
       <NavBar {...navContent} />
       <div className={styles["layout-container"]}>
-        <GreetingSection {...greetingContent} isLoading={isLoading} />
-        <OurServicesSection {...servicesContent} isLoading={isLoading} />
-        <ReviewsSection {...reviewsContent} isLoading={isLoading} />
-        <AboutUsSection {...aboutContent} isLoading={isLoading} />
-        <FranchiseSection {...franchiseContent} isLoading={isLoading} />
+        <GreetingSection {...greetingContent} handleSchedule={actionMessage} />
+        <OurServicesSection {...servicesContent} />
+        <ReviewsSection {...reviewsContent} />
+        <AboutUsSection {...aboutContent} />
+        <FranchiseSection {...franchiseContent} />
         <Footer {...footerContent} />
       </div>
     </>

@@ -1,9 +1,4 @@
 .greeting-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-
   width: 100vw;
   height: 45.6vw;
   padding: 0 1rem;
@@ -15,74 +10,102 @@
   background-position: top center;
 }
 
-.text-container {
-  max-width: 48%;
-}
-
 .title {
   color: #fff;
-  font-size: 3.5vw;
+  font-size: max(3.5vw, 1.5rem);
 }
 
 .body {
-  color: #fff;
+  font-size: 1.15rem;
+
   max-width: 75%;
-  font-size: 1.25rem;
   margin: 1.5rem 0;
 }
 
+.footer {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .text {
-  color: #fff;
-  margin-left: 1rem;
+  font-size: 0.95rem;
 }
 
 .circle-container {
-  align-self: flex-end;
-
-  top: -3rem;
-  position: relative;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  height: 30vw;
-  width: 30vw;
-
-  border-radius: 50%;
-  background-color: var(--unnamed-color-ffe530);
+  display: none;
 }
 
-.circle-container::after {
-  content: "";
-
-  top: 50%;
-  left: 50%;
-  position: absolute;
-
-  box-sizing: content-box;
-
-  width: 30vw;
-  height: 30vw;
-
-  border-radius: 50%;
-  border: 8vw solid transparent;
-  border-bottom-color: #f3f6fb;
-  border-right-color: #f3f6fb;
-
-  transform: translate(-50%, -50%);
-}
-
-.dog-image {
-  position: relative;
-  top: -8vw;
-
-  width: auto;
-  height: 45vw;
+@media (max-width: 750px) {
+  .text-container {
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 750px) {
   .greeting-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
     padding: 0 10%;
+  }
+
+  .text-container {
+    max-width: 48%;
+  }
+
+  .body,
+  .text {
+    color: #fff;
+  }
+  .circle-container {
+    align-self: flex-end;
+
+    top: -3rem;
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    height: 30vw;
+    width: 30vw;
+
+    border-radius: 50%;
+    background-color: var(--unnamed-color-ffe530);
+  }
+
+  .circle-container::after {
+    content: "";
+
+    top: 50%;
+    left: 50%;
+    position: absolute;
+
+    box-sizing: content-box;
+
+    width: 30vw;
+    height: 30vw;
+
+    border-radius: 50%;
+    border: 8vw solid transparent;
+    border-bottom-color: #f3f6fb;
+    border-right-color: #f3f6fb;
+
+    transform: translate(-50%, -50%);
+  }
+
+  .dog-image {
+    position: relative;
+    top: -8vw;
+
+    width: auto;
+    height: 45vw;
   }
 }
