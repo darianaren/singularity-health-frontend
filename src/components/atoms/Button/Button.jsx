@@ -73,7 +73,7 @@ const Button = ({
           />
         </div>
       ) : null}
-      <p className={styles.content}>{!isLoading ? children : "Espere"}</p>
+      <p className={styles.content}>{!isLoading ? children : "Cargando..."}</p>
     </button>
   );
 };
