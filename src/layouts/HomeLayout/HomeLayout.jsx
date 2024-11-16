@@ -21,15 +21,22 @@ const FranchiseSection = dynamic(
 const Footer = dynamic(() => import("@/components/organisms/Footer/Footer"));
 const NavBar = dynamic(() => import("@/components/organisms/NavBar/NavBar"));
 
-const HomeLayout = () => {
+const HomeLayout = ({
+  isLoading,
+  greetingContent,
+  servicesContent,
+  reviewsContent,
+  aboutContent,
+  franchiseContent
+}) => {
   return (
     <div>
       <NavBar />
-      <GreetingSection />
-      <OurServicesSection />
-      <ReviewsSection />
-      <AboutUsSection />
-      <FranchiseSection />
+      <GreetingSection {...greetingContent} isLoading={isLoading} />
+      <OurServicesSection {...servicesContent} isLoading={isLoading} />
+      <ReviewsSection {...reviewsContent} isLoading={isLoading} />
+      <AboutUsSection {...aboutContent} isLoading={isLoading} />
+      <FranchiseSection {...franchiseContent} isLoading={isLoading} />
       <Footer />
     </div>
   );
