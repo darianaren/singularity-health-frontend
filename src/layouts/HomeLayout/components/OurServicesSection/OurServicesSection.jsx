@@ -1,14 +1,15 @@
 import React from "react";
 
-import Image from "next/image";
 import dog from "public/icons/dog.svg";
-import track from "public/icons/dog-track.svg";
 import cat from "public/icons/cat.svg";
 import house from "public/icons/house.svg";
+import track from "public/icons/dog-track.svg";
 
-import styles from "./styles.module.css";
 import { CARDS } from "./constants";
+import styles from "./styles.module.css";
 
+import Card from "@/components/atoms/Card/Card";
+import { CARD_SIZES } from "@/components/atoms/Card/constants";
 import SubmitInput from "@/components/molecules/SubmitInput/SubmitInput";
 
 const OurServicesSection = ({ title, body, subtitle, handleLocation }) => {
@@ -25,14 +26,19 @@ const OurServicesSection = ({ title, body, subtitle, handleLocation }) => {
         <SubmitInput placeholder="Zip Code" onSubmit={handleLocation} />
       </article>
 
-      <div className={styles["cards-container"]}>
+      <aside className={styles["cards-container"]}>
         {cards.map(({ image, text }) => (
-          <div key={text} className={styles.card}>
-            <Image src={image} alt={text} className={styles["card-image"]} />
-            <p className={styles["text-image"]}>{text}</p>
-          </div>
+          <Card
+            key={text}
+            body={text}
+            image={{
+              src: image,
+              alt: text
+            }}
+            size={CARD_SIZES.small}
+          />
         ))}
-      </div>
+      </aside>
     </section>
   );
 };
