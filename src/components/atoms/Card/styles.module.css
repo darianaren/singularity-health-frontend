@@ -1,4 +1,4 @@
-.card.small {
+.card {
   gap: 1.5rem;
 
   padding: max(2vw, 1rem);
@@ -9,9 +9,37 @@
 }
 
 .card.large {
+  gap: 1rem;
+  display: grid;
+  grid-template-areas:
+    "image title"
+    "image body"
+    "image button";
   width: 100%;
 
   background: url("/backgrounds/bg-card-blue.svg");
+}
+
+.card.large > .image {
+  grid-area: image;
+  align-self: center;
+  justify-self: center;
+
+  width: 12vw !important;
+  height: auto !important;
+}
+
+.card.large > .title {
+  grid-area: title;
+
+  font-size: max(2vw, 1.5rem);
+  color: var(--unnamed-color-ffe530);
+}
+
+.card.large > .body {
+  grid-area: body;
+  color: #fff;
+  font-size: max(1.25vw, 1rem);
 }
 
 .card.small {
@@ -44,9 +72,17 @@
 .card.small > .body {
   color: #fff;
   text-align: center;
+  text-overflow: ellipsis;
+
+  max-height: 6rem;
+  overflow: hidden;
 }
 
 @media (min-width: 950px) {
+  .card.large {
+    gap: 2.5rem;
+  }
+
   .card.small {
     width: 40vw;
   }
