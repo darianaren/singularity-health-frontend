@@ -15,11 +15,16 @@ import {
  * @module Carousel
  *
  * @description
+ * A component that renders a carousel of cards (Cards).
+ * The carousel allows navigation between cards using arrows to move forward or backward.
+ * The cards are displayed with a sliding animation between items.
  *
  * @component
- * @param {Object} props - Properties passed to the Carousel component.
+ * @param {Object} props - The properties passed to the component.
+ * @param {Array} props.cards - A list of objects representing the cards to be displayed in the carousel.
+ * Each card object should include a unique `id` property, as well as other attributes that will be passed as `props` to the `Card` component.
  *
- * @returns {React.Component}
+ * @returns {React.Component} The Carousel component.
  */
 const Carousel = ({ cards = [] }) => {
   const [currentIndex, setCurrentIndex] = useState(1);
