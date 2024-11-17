@@ -1,10 +1,12 @@
 export const CARD_SIZES = Object.freeze({
   small: Symbol("The card is small"),
+  medium: Symbol("The card is medium"),
   large: Symbol("The card is large")
 });
 
 export const CARD_SIZES_VALUE = Object.freeze({
   [CARD_SIZES.small]: "small",
+  [CARD_SIZES.medium]: "medium",
   [CARD_SIZES.large]: "large"
 });
 

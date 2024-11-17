@@ -59,9 +59,11 @@ const Card = ({
           height={image.height || 100}
         />
       ) : null}
-      <h2 className={styles.title}>
-        {title || "We are looking for information"}
-      </h2>
+      {title ? (
+        <h2 className={styles.title}>
+          {title || "We are looking for information"}
+        </h2>
+      ) : null}
       <p className={styles.body}>{body}</p>
       {button ? (
         <Button
