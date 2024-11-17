@@ -10,23 +10,17 @@
 
 .card.large {
   gap: 1rem;
-  display: grid;
-  grid-template-areas:
-    "image title"
-    "image body"
-    "image button";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 
   background: url("/backgrounds/bg-card-blue.svg");
 }
 
 .card.large > .image {
-  grid-area: image;
-  align-self: center;
-  justify-self: center;
-
-  width: 12vw !important;
-  height: auto !important;
+  display: none;
 }
 
 .card.large > .title {
@@ -81,6 +75,22 @@
 @media (min-width: 950px) {
   .card.large {
     gap: 2.5rem;
+    display: grid;
+    grid-template-areas:
+      "image title"
+      "image body"
+      "image button";
+  }
+
+  .card.large > .image {
+    grid-area: image;
+
+    align-self: center;
+    justify-self: center;
+    display: inline-block;
+
+    width: 12vw !important;
+    height: auto !important;
   }
 
   .card.small {
