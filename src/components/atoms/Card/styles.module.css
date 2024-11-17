@@ -1,0 +1,47 @@
+.card.small {
+  gap: 1.5rem;
+
+  padding: max(2vw, 1rem);
+
+  border-radius: 20px;
+  background-size: cover;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.card.large {
+  width: 100%;
+
+  background: url("/backgrounds/bg-card-blue.svg");
+}
+
+.card.small {
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+  justify-content: center;
+
+  width: 40vw;
+  max-width: 35rem;
+}
+
+.card.small.blue {
+  background: url("/backgrounds/bg-carousel-card-blue.svg");
+}
+
+.card.small.orange {
+  background: url("/backgrounds/bg-carousel-card-orange.svg");
+}
+
+.card.small > .image {
+  border-radius: 50%;
+}
+
+.card.small > .title {
+  font-family: var(--font-confortaa-regular);
+  color: #fff;
+}
+
+.card.small > .body {
+  color: #fff;
+  text-align: center;
+}
