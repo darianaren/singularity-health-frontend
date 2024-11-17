@@ -6,7 +6,6 @@ import { parsedCards } from "./utils";
 import Carousel from "@/components/molecules/Carousel/Carousel";
 
 const ReviewsSection = ({ title, body, reviewers = [] }) => {
-  console.log(reviewers);
   const cards = parsedCards({ reviewers, body });
   return (
     <section className={styles["reviews-container"]}>

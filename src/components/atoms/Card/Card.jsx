@@ -23,17 +23,16 @@ import {
  * @returns {React.Component}
  */
 const Card = ({
+  body,
   image,
   title,
-  body,
   button,
-  className,
   size = CARD_SIZES.small,
   background = BACKGROUND_COLORS.blue
 }) => {
   return (
     <article
-      className={`${styles.card} ${styles[CARD_SIZES_VALUE[size]]} ${styles[BACKGROUND_COLORS_VALUE[background]]} ${className}`}
+      className={`${styles.card} ${styles[CARD_SIZES_VALUE[size]]} ${styles[BACKGROUND_COLORS_VALUE[background]]}`}
     >
       {image.src ? (
         <Image
@@ -48,7 +47,18 @@ const Card = ({
         {title || "We are looking for information"}
       </h3>
       <p className={styles.body}>&ldquo;{body}&rdquo;</p>
-      {button ? <Button {...button} /> : null}
+      {button ? (
+        <Button
+          style={{
+            margin: 0,
+            color: "#ff6752",
+            backgroundColor: "#fff"
+          }}
+          {...button}
+        >
+          {button.label}
+        </Button>
+      ) : null}
     </article>
   );
 };

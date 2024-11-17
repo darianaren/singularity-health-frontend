@@ -1,0 +1,60 @@
+.carousel-container {
+  position: relative;
+
+  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cards-container {
+  position: relative;
+
+  width: 40vw;
+  height: 18rem;
+  max-width: 35rem;
+}
+
+.slide {
+  top: 0;
+  position: absolute;
+
+  opacity: 1;
+  z-index: 1;
+  transition:
+    z-index 1s ease,
+    transform 1s ease,
+    opacity 0.2s ease;
+  transform: translateX(0) scale(0.8);
+}
+
+.slide.center {
+  z-index: 2;
+  transform: translateX(0) scale(1);
+}
+
+.slide.left {
+  transform: translateX(-20rem) scale(0.8);
+}
+
+.slide.right {
+  transform: translateX(20rem) scale(0.8);
+}
+
+.slide.second-left {
+  opacity: 0;
+  z-index: -1;
+  transform: translateX(-100%) scale(0.5);
+}
+
+.slide.second-right {
+  opacity: 0;
+  z-index: -1;
+  transform: translateX(100%) scale(0.5);
+}
+
+.slide.hidden {
+  opacity: 0;
+  display: none;
+}
