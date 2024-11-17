@@ -25,6 +25,7 @@ const Button = ({
   disabled,
   isLoading,
   ripple = true,
+  colorText = "#fff",
   "aria-label": ariaLabel,
   ...opts
 }) => {
@@ -73,7 +74,9 @@ const Button = ({
           />
         </div>
       ) : null}
-      <p className={styles.content}>{!isLoading ? children : "Cargando..."}</p>
+      <p className={styles.content} style={{ "--color-text": colorText }}>
+        {!isLoading ? children : "Cargando..."}
+      </p>
     </button>
   );
 };

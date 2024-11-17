@@ -46,8 +46,8 @@
 }
 
 .content {
-  color: #fff;
   font-size: 1rem;
+  color: var(--color-text);
   font-family: var(--font-open-sans-bold);
 }
 
