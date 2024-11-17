@@ -58,7 +58,7 @@ const Carousel = ({ cards = [] }) => {
               key={id}
               className={`${styles.slide} ${position === cards.length - 1 ? styles["second-left"] : styles[slidePosition]}`}
             >
-              <Card {...data} background={bgColor} size={CARD_SIZES.small} />
+              <Card {...data} background={bgColor} size={CARD_SIZES.medium} />
             </div>
           );
         })}
