@@ -2,9 +2,48 @@
   width: 100vw;
   height: 77vw;
   padding: 0 1rem;
+  margin-top: 5rem;
 
   background: url("/backgrounds/bg-home-yellow.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top center;
+}
+
+.cards-container {
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+
+  width: max-content;
+  height: min-content;
+}
+
+.text-container {
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: max(2vw, 1.5rem);
+}
+
+.body {
+  font-size: max(1.15vw, 1rem);
+}
+
+.subtitle {
+  color: var(--unnamed-color-ff6752);
+}
+
+@media (min-width: 950px) {
+  .about-us-container {
+    padding: 0 10%;
+    margin-top: 15rem;
+  }
+
+  .text-container {
+    width: 40%;
+  }
 }
