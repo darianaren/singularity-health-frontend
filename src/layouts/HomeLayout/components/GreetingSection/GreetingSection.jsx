@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-import golden from "public/images/golden-retriever@2x.png";
+import golden from "public/images/golden-retriever.png";
 
 import styles from "./styles.module.css";
 
