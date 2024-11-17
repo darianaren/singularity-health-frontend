@@ -81,8 +81,8 @@ export const FOOTER_ELEMENTS = ({ constructionMessage, newsletterMessage }) =>
           path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME.services]
         },
         {
-          name: "Franchisee Login",
-          path: "/" + ROUTES_NAME_VALUE[ROUTES_NAME.login]
+          name: "Franchise Login",
+          action: constructionMessage
         },
         {
           name: "Term of Use",
