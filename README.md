@@ -79,4 +79,13 @@ Para comenzar con el proyecto, sigue los siguientes pasos:
     http://localhost:3000
     ```
 
-5. **Verifica el funcionamiento:** Asegúrate de que la aplicación esté funcionando correctamente abriendo el navegador y visitando la URL local. Si todo está configurado correctamente, deberías ver la página de inicio de la aplicación.
+5. **Verifica el funcionamiento:** Asegúrate de que la aplicación esté funcionando correctamente abriendo el navegador y visitando la URL local. Puedes iniciar sesion con los usuarios proporcionados por la API y cualquier contraseña. Por ejemplo:
+  - Usuario:
+    ```bash
+    eve.holt@reqres.in
+    ```
+
+  - Contraseña
+    ```bash
+    eve123
+    ```
