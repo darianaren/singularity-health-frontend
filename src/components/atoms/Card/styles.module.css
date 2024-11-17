@@ -20,7 +20,7 @@
   flex-flow: column wrap;
   justify-content: center;
 
-  width: 40vw;
+  width: 100%;
   max-width: 35rem;
 }
 
@@ -44,4 +44,10 @@
 .card.small > .body {
   color: #fff;
   text-align: center;
+}
+
+@media (min-width: 950px) {
+  .card.small {
+    width: 40vw;
+  }
 }
