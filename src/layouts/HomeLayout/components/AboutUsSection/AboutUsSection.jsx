@@ -18,15 +18,16 @@ const AboutUsSection = ({ title, body, subtitle, handleLocation }) => {
     <section className={styles["about-us-container"]}>
       <aside className={styles["cards-container"]}>
         {cards.map(({ image, text }) => (
-          <Card
-            key={text}
-            body={text}
-            image={{
-              src: image,
-              alt: text
-            }}
-            size={CARD_SIZES.small}
-          />
+          <div key={text} className={styles[text.toLowerCase]}>
+            <Card
+              body={text}
+              image={{
+                src: image,
+                alt: text
+              }}
+              size={CARD_SIZES.small}
+            />
+          </div>
         ))}
       </aside>
 

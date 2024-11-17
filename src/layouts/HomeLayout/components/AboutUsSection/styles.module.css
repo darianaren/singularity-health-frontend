@@ -1,8 +1,14 @@
 .about-us-container {
+  gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
   width: 100vw;
-  height: 77vw;
+  min-height: 77vw;
+  margin: 5rem 0;
   padding: 0 1rem;
-  margin-top: 5rem;
 
   background: url("/backgrounds/bg-home-yellow.svg");
   background-size: contain;
@@ -11,18 +17,23 @@
 }
 
 .cards-container {
-  gap: 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
+  order: 1;
 
-  width: max-content;
-  height: min-content;
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto auto;
 }
 
 .text-container {
   gap: 1.5rem;
   display: flex;
   flex-direction: column;
+
+  margin: 1rem auto;
 }
 
 .title {
@@ -39,11 +50,65 @@
 
 @media (min-width: 950px) {
   .about-us-container {
+    justify-content: space-between;
+
     padding: 0 10%;
-    margin-top: 15rem;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1380px) {
+  .text-container {
+    order: 1;
+
+    margin: 0;
+    width: 40%;
   }
 
-  .text-container {
-    width: 40%;
+  .cards-container {
+    position: relative;
+
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "image1 ."
+      ". image2"
+      "image3 .";
+    justify-content: space-between;
+
+    margin: 0;
+    width: 40rem;
+    height: 47rem;
+  }
+
+  .cards-container::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: -5rem;
+
+    width: 39rem;
+    height: 32.5rem;
+
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: 0.5rem dashed var(--unnamed-color-fd6845);
+    border-left-color: transparent;
+  }
+
+  .cards-container div:nth-child(1) {
+    z-index: 3;
+    grid-area: image1;
+  }
+
+  .cards-container div:nth-child(2) {
+    z-index: 3;
+    grid-area: image2;
+  }
+
+  .cards-container div:nth-child(3) {
+    z-index: 3;
+    grid-area: image3;
   }
 }
