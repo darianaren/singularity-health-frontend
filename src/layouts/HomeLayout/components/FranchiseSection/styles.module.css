@@ -1,0 +1,11 @@
+.franchise-container {
+  padding: 0 1rem;
+  margin-bottom: 7rem;
+}
+
+@media (min-width: 950px) {
+  .franchise-container {
+    padding: 0 10%;
+    margin-top: -5rem;
+  }
+}
