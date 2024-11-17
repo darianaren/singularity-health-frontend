@@ -10,7 +10,7 @@ const servicesContent = {
   },
   reviewsContent: {
     title: "Client Testimonials",
-    body: "I'm happy I had the chance to meet the person who walks my dog every day and discuss the care they provide. I also love getting the daily updates on how my dog is doing."
+    body: `"I'm happy I had the chance to meet the person who walks my dog every day and discuss the care they provide. I also love getting the daily updates on how my dog is doing."`
   },
   aboutContent: {
     title: "How It Works",

@@ -10,7 +10,7 @@ const aboutUsContent = {
   },
   reviewsContent: {
     title: "Hear From Our Community",
-    body: "I'm really happy to have met the dog walker and talked to her about my dog's routine. I also appreciate receiving daily updates on how my dog is getting along."
+    body: `"I'm really happy to have met the dog walker and talked to her about my dog's routine. I also appreciate receiving daily updates on how my dog is getting along."`
   },
   aboutContent: {
     title: "Learn More About Us",

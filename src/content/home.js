@@ -10,7 +10,7 @@ const homeContent = {
   },
   reviewsContent: {
     title: "Here's what pet owners have to say about Fetch! Pet Care...",
-    body: "I like that I got to meet the dog Walker who is walking my dog daily and consult with her. I also appreciate the daily communication I get about the dog and how my dog is doing"
+    body: `"I like that I got to meet the dog Walker who is walking my dog daily and consult with her. I also appreciate the daily communication I get about the dog and how my dog is doing"`
   },
   aboutContent: {
     title: "How it Works",

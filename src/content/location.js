@@ -10,7 +10,7 @@ const locationContent = {
   },
   reviewsContent: {
     title: "What Locals Say",
-    body: "It's great to know the dog walker personally and be able to check in with them regularly. I also really appreciate the daily updates on my dog's activities."
+    body: `"It's great to know the dog walker personally and be able to check in with them regularly. I also really appreciate the daily updates on my dog's activities."`
   },
   aboutContent: {
     title: "Our Presence",

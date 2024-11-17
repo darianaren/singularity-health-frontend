@@ -10,7 +10,7 @@ const blogContent = {
   },
   reviewsContent: {
     title: "What Readers Are Saying",
-    body: "It's been great getting to know the dog walker and having the opportunity to consult with her. I also value the daily messages that let me know how my dog is doing."
+    body: `"It's been great getting to know the dog walker and having the opportunity to consult with her. I also value the daily messages that let me know how my dog is doing."`
   },
   aboutContent: {
     title: "Why We Blog",

@@ -10,7 +10,7 @@ const franchiseContent = {
   },
   reviewsContent: {
     title: "Hear From Franchise Owners",
-    body: "I'm glad I was able to meet the walker taking care of my dog every day and have a conversation with them. The daily communication about how my dog is doing means a lot to me."
+    body: `"I'm glad I was able to meet the walker taking care of my dog every day and have a conversation with them. The daily communication about how my dog is doing means a lot to me."`
   },
   aboutContent: {
     title: "Why Choose Us?",
